@@ -1,0 +1,85 @@
+{
+  "projectType": "general",
+  "projectName": "MouseTiler",
+  "projectDescription": "The fastest, simplest window tiler for KDE Plasma 6+ with mouse-driven tiling and full layout customization.",
+  "theme": "aspen",
+  "primaryColor": "#2563eb",
+  "lightColor": "#3b82f6",
+  "darkColor": "#1e40af",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Tiling Modes",
+            "pages": [
+              "tiling-modes/grid-tiler",
+              "tiling-modes/overlay-tiler",
+              "tiling-modes/auto-tiling"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/virtual-desktop-manager",
+              "features/center-in-tile",
+              "features/custom-layouts",
+              "features/multi-monitor"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "configuration/settings",
+              "configuration/keyboard-shortcuts",
+              "configuration/layout-editor",
+              "configuration/auto-tiler-config"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/troubleshooting",
+              "reference/compatibility",
+              "reference/faq",
+              "reference/changelog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Mouse-driven window tiling with Grid and Overlay modes",
+    "Advanced auto-tiling with carousel and stacking layouts",
+    "Virtual desktop management with drag-and-drop support",
+    "Web-based layout editor with 20+ pre-defined layouts",
+    "Multi-monitor support with per-screen configuration",
+    "Highly customizable with 20+ settings and keyboard shortcuts",
+    "Touch and stylus input support (including Wacom devices)",
+    "Center-in-tile feature for flexible window positioning"
+  ],
+  "publicApiSurface": [
+    "Ctrl+Alt+I - Toggle input modes (mouse/stylus/touch)",
+    "Ctrl+Alt+A - Toggle auto-tiling on/off",
+    "Ctrl+Alt+X - Switch between auto-tiler layouts",
+    "Ctrl+Alt+C - Switch between carousel tilers",
+    "Meta+Ctrl+C - Center window in tile",
+    "Ctrl+Alt+Left/Right - Scroll through auto-tiled windows",
+    "Grid Tiler - Quick popup grid for window placement",
+    "Overlay Tiler - Full-screen overlay for multi-tile spanning",
+    "Auto Tiler - Automatic window arrangement with multiple presets",
+    "Virtual Desktop Manager - Add, remove, and move between virtual desktops",
+    "Layout Editor - Web-based tool for creating custom tile layouts",
+    "Special Tiles - Fill, Split, Maximize, Minimize, Fullscreen, Keep Above/Below"
+  ]
+}
