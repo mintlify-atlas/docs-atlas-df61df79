@@ -1,0 +1,97 @@
+---
+title: Grid tiler
+description: Quick window tiling with popup grid layouts
+---
+
+The Grid Tiler is a popup-based tiling mode that lets you quickly place windows by moving them just a few pixels. It displays a grid of layout options near your cursor when you start moving a window.
+
+## How it works
+
+When you start moving a window, move it just a few pixels to trigger the Grid Tiler. A popup grid appears near your cursor showing available layouts. Hover over a tile and release to place your window.
+
+<Note>
+The Grid Tiler requires minimal mouse movement - just a few pixels to trigger the interface.
+</Note>
+
+## Default layouts
+
+The Grid Tiler comes with several pre-configured layouts:
+
+<Accordion title="Common layouts">
+- **Half screen**: Left and right 50% splits
+- **Thirds**: 33%, 67% vertical divisions
+- **Quarters**: Four equal quadrants
+- **Focus layouts**: Large main window with smaller side panels
+</Accordion>
+
+![Grid Tiler Default](/assets/popup_tiler.png)
+
+## All layouts view
+
+Press the configured shortcut (default: show all/span) while the Grid Tiler is open to toggle between default layouts and all available layouts.
+
+![Grid Tiler All Layouts](/assets/popup_tiler_all.png)
+
+## Configuration options
+
+### Grid appearance
+
+Customize how the Grid Tiler looks and behaves:
+
+- **Grid width and height**: Control the size of each layout tile in the popup
+- **Grid spacing**: Adjust padding between layout options
+- **Grid columns**: Set how many layouts appear per row
+- **Opacity**: Make the Grid Tiler more or less transparent
+
+### Grid position
+
+Control where the Grid Tiler appears:
+
+<Steps>
+
+<Step title="Choose popup location">
+Set whether the grid appears:
+- At cursor position (default)
+- Fixed screen position
+</Step>
+
+<Step title="Set alignment">
+Configure horizontal and vertical alignment:
+- Left/Center/Right
+- Top/Center/Bottom
+</Step>
+
+</Steps>
+
+### Tiling behavior
+
+Configure how windows snap to tiles:
+
+- **Show target tile hint**: Preview where your window will be placed
+- **Show size hint**: Display dimensions of the target tile
+- **Show position hint**: Show coordinates of the target position
+
+## Keyboard shortcuts
+
+While the Grid Tiler is active:
+
+- **Show all/span**: Toggle between default and all layouts
+- **Center in tile**: Center window without resizing (Meta+Ctrl+C)
+- **Visibility**: Toggle tiler visibility
+- **Change mode**: Switch between Grid and Overlay tiler
+- **Input type**: Toggle between mouse and window cursor (Ctrl+Alt+I)
+
+## Virtual desktop integration
+
+The Grid Tiler can integrate with virtual desktop management:
+
+<Note>
+When virtual desktop visibility is enabled, you'll see your virtual desktops below the grid layouts, allowing you to move windows to different desktops while tiling.
+</Note>
+
+## Tips
+
+- Move your window only a few pixels to trigger the Grid Tiler quickly
+- Use the center in tile feature to position windows without resizing them
+- Configure the reveal margin to control how close your mouse needs to be to see the tiler
+- Customize layouts using the [web layout editor](https://rxweb.epizy.com/mousetiler/editor.html)

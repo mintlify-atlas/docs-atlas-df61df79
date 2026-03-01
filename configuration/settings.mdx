@@ -1,0 +1,317 @@
+---
+title: Settings
+description: Configure MouseTiler to match your workflow with over 20 customizable settings
+---
+
+MouseTiler offers extensive customization options to match your workflow. You can configure everything from tiler visibility and positioning to tile size, colors, and behavior.
+
+## Accessing settings
+
+To access MouseTiler settings:
+
+<Steps>
+  <Step title="Open System Settings">
+    Navigate to **System Settings** > **Window Management** > **KWin Scripts**
+  </Step>
+  
+  <Step title="Find MouseTiler">
+    Locate **Mouse Tiler** in the list of KWin Scripts
+  </Step>
+  
+  <Step title="Click Configure">
+    Click the configure icon next to Mouse Tiler to open the settings panel
+  </Step>
+</Steps>
+
+<Warning>
+  **KDE Bug: Settings require script reload**
+  
+  Due to a bug in KDE, changing settings requires reloading the script for changes to take effect. A reboot also works, but follow these steps for a faster reload:
+</Warning>
+
+### Reloading the script after changing settings
+
+<Steps>
+  <Step title="Disable the script">
+    In **System Settings** > **Window Management** > **KWin Scripts**, untick **Mouse Tiler**
+  </Step>
+  
+  <Step title="Apply changes">
+    Click **Apply**
+  </Step>
+  
+  <Step title="Re-enable the script">
+    Tick **Mouse Tiler** again
+  </Step>
+  
+  <Step title="Apply again">
+    Click **Apply** to reload the script with your new settings
+  </Step>
+</Steps>
+
+## General settings
+
+### Default tiler
+
+<ParamField path="defaultTiler" type="dropdown" default="Popup Grid">
+  Choose which tiler appears when you start moving a window. You can toggle between tilers using **Meta+Ctrl+Space**.
+  
+  Options:
+  - **Popup Grid** - Quick grid-based tiler
+  - **Overlay** - Full-screen overlay tiler
+</ParamField>
+
+<ParamField path="rememberTiler" type="boolean" default="true">
+  Remember the previously used tiler during the same session when toggling with the shortcut
+</ParamField>
+
+<ParamField path="restoreSize" type="boolean" default="false">
+  Restore previous window size when starting to move a window
+</ParamField>
+
+<ParamField path="allowTransient" type="boolean" default="false">
+  Allow tiling of transient windows (confirmation dialogs, toolbars, and other temporary sub-windows)
+</ParamField>
+
+### Center in tile mode
+
+Configure how center in tile works. Toggle between regular tiling and centering using **Meta+Ctrl+C**.
+
+<ParamField path="centerInTileMode" type="dropdown" default="Tile normally">
+  Options:
+  - **Tile normally** - Resize the window to match tile size
+  - **Tile normally first time, then remember** - Remember the mode during the same session
+  - **Center in tile** - Align window center with tile center without resizing
+  - **Center in tile first time, then remember** - Start with center mode, then remember preference
+</ParamField>
+
+### Visibility
+
+Determine when the tiler is visible. Previous visibility is kept when changing modes using keyboard shortcuts.
+
+<ParamField path="tilerVisibility" type="dropdown" default="Always visible">
+  **IMPORTANT** - Controls default tiler visibility
+  
+  Options:
+  - **Always visible**
+  - **Only visible if window is dragged right away** - Otherwise remains hidden (mouse pointer change indicates safe to drag)
+  - **Hidden until toggled by shortcut** - Use **Meta+Space** to toggle
+  - **Hidden until mouse is near tiler** - Only works for Popup Grid mode
+  - **Hidden if window is dragged right away** - Appears if you click and hold (Firefox not compatible)
+</ParamField>
+
+<ParamField path="revealMargin" type="number" default="200">
+  Additional reveal margin in pixels - only applies when using "Hidden until mouse is near tiler" option
+  
+  Range: 0-2000 px
+</ParamField>
+
+<ParamField path="windowVisibility" type="dropdown" default="Always visible">
+  Control visibility of the moved window
+  
+  Options:
+  - **Always visible**
+  - **Hidden while tiler is visible**
+  - **Hidden while above tiler**
+</ParamField>
+
+### Colors
+
+<ParamField path="theme" type="dropdown" default="Follow theme colors">
+  Change the tiler color theme
+  
+  Options:
+  - **Follow theme colors** - Use your current system theme
+  - **Alpha test blue**
+  - **Orange**
+  - **Red (light background)**
+  - **Red (dark background)**
+  - **Lime green**
+  - **Purple**
+  - **Green**
+  - **Yellow**
+  - **Blue**
+</ParamField>
+
+### Window margin
+
+<ParamField path="tileMargin" type="number" default="0">
+  Set margin around windows in pixels
+  
+  Range: 0-100 px
+</ParamField>
+
+<ParamField path="screenMargin" type="number" default="0">
+  Additional screen edge margin in pixels. Set to -1 px if you use screen scaling and experience gaps around screen edges.
+  
+  Range: -5 to 100 px
+</ParamField>
+
+### Input type
+
+<ParamField path="defaultInput" type="dropdown" default="Mouse">
+  Change the default input type (needed for certain Stylus or Touchpad input). Toggle between input types with **Ctrl+Alt+I**.
+  
+  Options:
+  - **Mouse** - Tiler opens at and uses mouse cursor position
+  - **Window** - Tiler opens at and uses window top-center position (use for Stylus or Touch input)
+</ParamField>
+
+## Overlay settings
+
+### General
+
+<ParamField path="showOverlayTextHint" type="boolean" default="true">
+  Show text hint inside current tile with keyboard shortcuts and special functionality information
+</ParamField>
+
+### Layout
+
+<ParamField path="overlayLayout" type="string" default="4x2">
+  Set the layout for Overlay mode
+  
+  Valid formats:
+  - Grid: `XxY` (e.g., `4x2`)
+  - Tile: `X,Y,Width,Height` in percent, fractions, or pixels (e.g., `0,0,50,100`)
+  - Anchored tile: `X,Y,Width,Height,AnchorX,AnchorY` (e.g., `100,100,50,33,RIGHT,BOTTOM`)
+  - Multiple tiles: Use `+` to combine (e.g., `0,0,50,100+50,0,50,100`)
+  
+  <Warning>SPECIAL layouts are not supported in Overlay Mode</Warning>
+  
+  Use the [web layout editor](https://rxweb.epizy.com/mousetiler/editor.html) for visual editing
+</ParamField>
+
+<ParamField path="overlayScreenEdgeMargin" type="number" default="0">
+  Margin around the overlay in pixels. Increase if you use edge snapping and want to leave a gap. Does not add margin around actual windows.
+  
+  Range: 0-100 px
+</ParamField>
+
+<ParamField path="overlayPollingRate" type="number" default="100">
+  Mouse position polling rate in milliseconds. Lower values provide faster response but may introduce lag.
+  
+  Range: 30-1000 ms (90-200 ms recommended)
+</ParamField>
+
+## Popup grid settings
+
+### General
+
+<ParamField path="rememberAllLayouts" type="boolean" default="false">
+  Remember if "All Layouts" were visible when opening the grid
+</ParamField>
+
+<ParamField path="showTargetTileHint" type="boolean" default="true">
+  Show target tile preview hint - an outline displays where the window will be placed
+</ParamField>
+
+<ParamField path="showTextHint" type="boolean" default="true">
+  Show text hint below the tiler with keyboard shortcuts and special functionality information
+</ParamField>
+
+<ParamField path="gridTilerOpacity" type="number" default="100">
+  Popup grid background opacity percentage
+  
+  Range: 0-100
+</ParamField>
+
+### Position
+
+**IMPORTANT** - Determines where the Popup Grid appears
+
+<ParamField path="popupGridAt" type="dropdown" default="Below mouse pointer">
+  Options:
+  - **Below mouse pointer**
+  - **At fixed screen position**
+</ParamField>
+
+<ParamField path="horizontalAlignment" type="dropdown" default="Center">
+  Horizontal position when using fixed screen position
+  
+  Options: Left, Center, Right
+</ParamField>
+
+<ParamField path="verticalAlignment" type="dropdown" default="Center">
+  Vertical position when using fixed screen position
+  
+  Options: Top, Center, Bottom
+</ParamField>
+
+### Grid configuration
+
+<ParamField path="gridColumns" type="number" default="3">
+  Number of columns for Popup Grid Layouts
+  
+  Range: 1-10
+</ParamField>
+
+<ParamField path="gridAllColumns" type="number" default="6">
+  Number of columns for All Layouts view
+  
+  Range: 1-10
+</ParamField>
+
+<ParamField path="gridSpacing" type="number" default="10">
+  Spacing between layouts in pixels
+  
+  Range: 1-15 px
+</ParamField>
+
+<ParamField path="gridWidth" type="number" default="130">
+  Width of each layout tile in pixels
+  
+  Range: 60-250 px
+</ParamField>
+
+<ParamField path="gridHeight" type="number" default="70">
+  Height of each layout tile in pixels
+  
+  Range: 60-250 px
+</ParamField>
+
+<ParamField path="popupGridPollingRate" type="number" default="100">
+  Mouse position polling rate in milliseconds. Lower values provide faster response but may introduce lag.
+  
+  Range: 30-1000 ms (50-150 ms recommended)
+</ParamField>
+
+### Virtual desktop manager
+
+<ParamField path="virtualDesktopVisibility" type="dropdown" default="Auto">
+  Configure if the Virtual Desktop Manager should be visible
+  
+  Options:
+  - **Always visible**
+  - **Always visible but tiler is hidden** - Pure virtual desktop manager
+  - **Auto** - Only visible when at least 2 virtual desktops exist
+  - **Hidden**
+</ParamField>
+
+<ParamField path="virtualDesktopDropAction" type="dropdown" default="Move window back">
+  Action when dropping window on virtual desktop
+  
+  Options:
+  - **Move window back to original position**
+  - **Maximize window**
+</ParamField>
+
+<ParamField path="virtualDesktopHoverTime" type="number" default="500">
+  Delay before changing to hovered virtual desktop in milliseconds
+  
+  Range: 100-2000 ms
+</ParamField>
+
+<ParamField path="showAddVirtualDesktopButton" type="boolean" default="true">
+  Show button to add new virtual desktops
+</ParamField>
+
+<ParamField path="autoRemoveEmptyVirtualDesktops" type="boolean" default="false">
+  Automatically remove empty virtual desktops
+</ParamField>
+
+## Manually erasing settings
+
+If you need to manually erase user data (developers or troubleshooting only):
+
+- Application/window data is stored in `~/.config/kde.org/kwin.conf`
+- System user settings are stored in `~/.config/kwinrc` under `[Script-mousetiler]`

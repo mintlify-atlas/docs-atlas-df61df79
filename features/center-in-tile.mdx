@@ -1,0 +1,102 @@
+---
+title: Center in tile
+description: Keep your window's current size while centering it within a specific tile position
+---
+
+The center in tile feature allows you to position a window within a tile location without resizing it. This is perfect for when you want to maintain a window's specific dimensions but center it in a particular area of your screen.
+
+## How it works
+
+Instead of resizing a window to fill the entire tile (standard tiling behavior), center in tile mode places the window at the center of the selected tile while preserving its current dimensions.
+
+<CardGroup cols={2}>
+  <Card title="Standard tiling" icon="maximize">
+    Window is resized to completely fill the selected tile area.
+  </Card>
+  
+  <Card title="Center in tile" icon="circle-dot">
+    Window keeps its current size and is centered within the selected tile area.
+  </Card>
+</CardGroup>
+
+## Keyboard shortcut
+
+Toggle center in tile mode on or off:
+
+<Note>
+**Default shortcut**: `Meta+Ctrl+C`
+
+You can customize this shortcut in MouseTiler settings using the `shortcutCenterInTile` option.
+</Note>
+
+When center in tile mode is active, you'll see visual indicators in the tiler interface showing that your window will be centered rather than resized.
+
+## Usage example
+
+<Steps>
+  <Step title="Enable center in tile mode">
+    Press `Meta+Ctrl+C` to activate center in tile mode. You'll see a visual indicator in the tiler interface.
+  </Step>
+  
+  <Step title="Move your window">
+    Click and drag a window's titlebar to bring up the tiler interface.
+  </Step>
+  
+  <Step title="Select a tile">
+    Hover over and select a tile. Notice the hint shows "Center in tile" instead of the normal tiling action.
+  </Step>
+  
+  <Step title="Drop the window">
+    Release the mouse button. Your window will be centered in the selected tile area without changing its size.
+  </Step>
+</Steps>
+
+## Use cases
+
+Center in tile is particularly useful for:
+
+- **Fixed-size applications**: Position calculator apps, chat windows, or other tools that work best at specific dimensions
+- **Floating windows**: Create a floating window layout where windows don't fill the entire screen
+- **Design work**: Precisely position windows while maintaining their aspect ratios
+- **Multi-monitor setups**: Center small windows within larger screen sections
+
+## Configuration modes
+
+MouseTiler offers several center in tile modes via the `centerInTileMode` setting:
+
+| Mode | Description |
+|------|-------------|
+| 0 (default) | Center in tile is off by default. Use `Meta+Ctrl+C` to toggle it on temporarily. It resets to off after tiling. |
+| 1 | Center in tile is off by default. Toggle with `Meta+Ctrl+C`. The setting persists across multiple tiling operations. |
+| 2 | Center in tile is on by default. Use `Meta+Ctrl+C` to toggle it off temporarily. It resets to on after tiling. |
+| 3 | Center in tile is on by default. Toggle with `Meta+Ctrl+C`. The setting persists across multiple tiling operations. |
+
+<Info>
+Modes 1 and 3 remember your preference (set via `rememberCenterInTile`), while modes 0 and 2 reset to the default after each tiling operation.
+</Info>
+
+## Visual indicators
+
+When center in tile mode is active, the popup tiler displays:
+
+- A **"⸰" symbol** in the active tile to indicate centering mode
+- A hint message: **"Center in tile - will not resize the window"**
+- The shortcut hint showing you can toggle with `Meta+Ctrl+C`
+
+In the overlay tiler, the status bar at the bottom shows:
+- **"Center in tile: Enabled"** or **"Center in tile: Disabled"**
+- The keyboard shortcut for quick reference
+
+## Combining with tiling layouts
+
+Center in tile works with all layout types:
+
+- **Grid layouts** (2x2, 3x1, etc.)
+- **Custom layouts** with percentage-based positioning
+- **Special layouts** like split and fill modes
+
+The window will always be centered within the selected tile's boundaries, regardless of the layout complexity.
+
+<Tip>
+Use center in tile mode with larger tile areas to create breathing room around your windows, which can reduce visual clutter and improve focus.
+</Tip>

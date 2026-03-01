@@ -1,0 +1,156 @@
+---
+title: Compatibility
+description: System requirements and compatibility information for MouseTiler
+---
+
+MouseTiler is designed to work with modern KDE Plasma environments. This page outlines the system requirements, tested platforms, and compatibility with other extensions.
+
+## System requirements
+
+### KDE Plasma version
+
+<Note>
+  MouseTiler requires **KDE Plasma 6 or higher**. Compatibility with previous versions is unknown and not officially supported.
+</Note>
+
+The extension is built for KDE Plasma 6+ and takes advantage of the latest KWin scripting APIs. If you're using an older version of Plasma, consider upgrading to ensure full compatibility and access to the latest features.
+
+### Display server support
+
+MouseTiler supports both major Linux display servers:
+
+- **Wayland**: Full support with all features
+- **X11**: Full support with all features
+
+You can use MouseTiler regardless of which display server you're running. All core functionality works identically on both platforms.
+
+## Tested platforms
+
+MouseTiler has been thoroughly tested on the following platforms:
+
+<CardGroup cols={2}>
+  <Card title="Fedora 42 KDE" icon="fedora">
+    - Wayland and X11 support
+    - Plasma 6.5.2 and 6.5.4
+    - Fully tested and verified
+  </Card>
+  <Card title="Debian 13" icon="debian">
+    - Plasma 6.3.6
+    - Stable operation confirmed
+  </Card>
+  <Card title="FreeBSD 15.0" icon="freebsd">
+    - X11 display server
+    - Plasma 6.4.5
+    - Tested and working
+  </Card>
+  <Card title="Other distributions" icon="linux">
+    - Should work on any KDE Plasma 6+ system
+    - Report compatibility on Discord
+  </Card>
+</CardGroup>
+
+<Note>
+  While MouseTiler is tested on these specific platforms, it should work on any Linux distribution or BSD variant running KDE Plasma 6 or higher.
+</Note>
+
+## Input device compatibility
+
+MouseTiler supports multiple input methods for window tiling:
+
+- **Mouse**: Standard mouse input for window manipulation
+- **Stylus**: Works with pen tablets and stylus input devices
+- **Touch**: Compatible with touchscreens and touch input
+- **Wacom devices**: Fully compatible with Wacom tablets and styluses
+
+You can toggle between input modes using `Ctrl+Alt+I` or configure the default input mode in settings.
+
+<Tip>
+  If you primarily use a stylus or touch input, set it as your default input mode in the MouseTiler settings to avoid toggling manually.
+</Tip>
+
+## Extension compatibility
+
+MouseTiler is designed to work alongside other KDE extensions and scripts.
+
+### Remember Window Positions
+
+<Card title="Remember Window Positions" icon="window-restore" href="https://github.com/rxappdev/RememberWindowPositions">
+  Highly compatible extension that restores window positions on application restart.
+</Card>
+
+MouseTiler and Remember Window Positions are the ultimate combination:
+- Use MouseTiler to position your windows precisely
+- Use Remember Window Positions to restore those positions when you restart applications
+- Both extensions are developed by the same author and designed to work together
+
+<Note>
+  Remember Window Positions was originally planned as part of MouseTiler but was released as a separate extension for better modularity.
+</Note>
+
+### Other tiling extensions
+
+MouseTiler should be compatible with most KDE extensions. However, be aware:
+
+<Warning>
+  Using multiple window tiling extensions simultaneously may cause conflicts. If you experience issues, try disabling other tiling scripts.
+</Warning>
+
+### Built-in KDE tiler
+
+MouseTiler can coexist with KDE's built-in tiling features, but you may want to disable or customize the built-in tiler to avoid shortcut conflicts or unexpected behavior.
+
+## Theme compatibility
+
+MouseTiler integrates seamlessly with your KDE theme:
+
+- **System theme integration**: MouseTiler can automatically follow your system color scheme
+- **Custom themes**: Choose from pre-defined color themes in settings
+- **Dark and light modes**: Full support for both dark and light themes
+- **Accent colors**: Respects your system accent color settings when using system theme mode
+
+<Tip>
+  If you want MouseTiler to always match your desktop appearance, enable "Follow system theme" in the settings.
+</Tip>
+
+## Multi-monitor support
+
+MouseTiler provides comprehensive multi-monitor support:
+
+- Works across multiple displays simultaneously
+- Respects individual monitor resolutions and scaling
+- Handles different monitor orientations (landscape/portrait)
+- Supports mixed DPI configurations
+
+<Note>
+  Some users with portrait monitors may want to enable the "Display in portrait mode" setting (available in future versions) to optimize the tiler layout orientation.
+</Note>
+
+## Known limitations
+
+<AccordionGroup>
+  <Accordion title="Titlebar button integration">
+    Currently, it's not possible to add a custom MouseTiler button to window titlebars through the KDE titlebar button configuration. This is a limitation of the KWin Script API.
+  </Accordion>
+  <Accordion title="Single key shortcuts">
+    Single modifier key shortcuts (Alt alone, Shift alone, Ctrl alone) are currently not available due to KDE limitations. This is under investigation for future versions.
+  </Accordion>
+</AccordionGroup>
+
+## Version compatibility notes
+
+<Warning>
+  If you're upgrading from a very old version of MouseTiler (pre-6.0), you may need to reset your settings for optimal performance. See the [Troubleshooting](/reference/troubleshooting) page for instructions on manually erasing settings.
+</Warning>
+
+MouseTiler uses semantic versioning:
+- **Major version** (6.x.x): Significant changes, may require configuration updates
+- **Minor version** (x.1.x): New features, backward compatible
+- **Patch version** (x.x.1): Bug fixes and small improvements
+
+## Getting compatibility help
+
+If you're unsure about compatibility with your system:
+
+- Check the [KDE Store page](https://store.kde.org/p/2334027) for the latest compatibility information
+- Join the [Discord channel](https://discord.gg/Js6AYsnQQj) to ask about your specific setup
+- Review the [GitHub repository](https://github.com/rxappdev/MouseTiler) for system-specific issues

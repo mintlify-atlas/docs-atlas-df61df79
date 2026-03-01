@@ -1,0 +1,142 @@
+---
+title: Keyboard shortcuts
+description: Complete reference of all keyboard shortcuts for MouseTiler
+---
+
+MouseTiler provides numerous keyboard shortcuts for quick access to features and toggling between modes.
+
+## Tiler mode shortcuts
+
+<ParamField path="Meta+Ctrl+Space" type="shortcut" default="Meta+Ctrl+Space">
+  **Toggle between tilers**
+  
+  Switch between Popup Grid and Overlay tiler modes while moving a window
+</ParamField>
+
+<ParamField path="Ctrl+Space" type="shortcut" default="Ctrl+Space">
+  **Show all layouts / Span multiple tiles**
+  
+  In Popup Grid mode, this shows all available layouts. In Overlay mode, it allows you to span multiple tiles.
+</ParamField>
+
+<ParamField path="Meta+Space" type="shortcut" default="Meta+Space">
+  **Toggle tiler visibility**
+  
+  Show or hide the tiler. Useful when visibility is set to "Hidden until toggled by shortcut".
+</ParamField>
+
+## Input and window control
+
+<ParamField path="Ctrl+Alt+I" type="shortcut" default="Ctrl+Alt+I">
+  **Toggle input type**
+  
+  Switch between Mouse cursor and Window position as the input source. Useful for Stylus, Touch, or Wacom tablet input.
+</ParamField>
+
+<ParamField path="Meta+Ctrl+C" type="shortcut" default="Meta+Ctrl+C">
+  **Toggle center in tile mode**
+  
+  Switch between normal tiling (resize window to tile) and center in tile (keep window size, center in tile position)
+</ParamField>
+
+<ParamField path="Meta+Ctrl+V" type="shortcut" default="Meta+Ctrl+V">
+  **Toggle move to virtual desktop on drop**
+  
+  When enabled, you move to the virtual desktop when dropping a window. When disabled, you stay on the current desktop.
+</ParamField>
+
+<ParamField path="Meta+Ctrl+S" type="shortcut" default="Meta+Ctrl+S">
+  **Toggle tiling suggestions**
+  
+  Enable or disable automatic tiling suggestions that appear after placing a window
+</ParamField>
+
+## Auto-tiling shortcuts
+
+<ParamField path="Ctrl+Alt+A" type="shortcut" default="Ctrl+Alt+A">
+  **Toggle auto-tiling**
+  
+  Enable or disable auto-tiling for the current window. Auto-tiling automatically arranges windows according to a predefined layout.
+</ParamField>
+
+<ParamField path="Ctrl+Alt+X" type="shortcut" default="Ctrl+Alt+X">
+  **Switch between auto-tilers**
+  
+  Cycle through up to three configured auto-tiler layouts
+</ParamField>
+
+<ParamField path="Ctrl+Alt+C" type="shortcut" default="Ctrl+Alt+C">
+  **Switch between auto-tilers (reverse)**
+  
+  Cycle through auto-tiler layouts in reverse order
+</ParamField>
+
+### Auto-tiler navigation
+
+<ParamField path="Ctrl+Alt+Left" type="shortcut" default="Ctrl+Alt+Left">
+  **Scroll auto-tiler left**
+  
+  In carousel layouts, scroll infinitely left. In normal layouts, scroll when there are more windows than tiles.
+</ParamField>
+
+<ParamField path="Ctrl+Alt+Right" type="shortcut" default="Ctrl+Alt+Right">
+  **Scroll auto-tiler right**
+  
+  In carousel layouts, scroll infinitely right. In normal layouts, scroll when there are more windows than tiles.
+</ParamField>
+
+<Note>
+  You can also scroll through auto-tiled windows by moving your mouse to the left or right screen edge (if enabled in settings).
+</Note>
+
+## Customizing shortcuts
+
+You can customize these keyboard shortcuts in the MouseTiler settings:
+
+<Steps>
+  <Step title="Open settings">
+    Go to **System Settings** > **Window Management** > **KWin Scripts**
+  </Step>
+  
+  <Step title="Configure MouseTiler">
+    Click the configure icon next to Mouse Tiler
+  </Step>
+  
+  <Step title="Navigate to Shortcuts tab">
+    Find the shortcuts section in the configuration panel
+  </Step>
+  
+  <Step title="Change shortcuts">
+    Modify any shortcut by clicking on it and entering your preferred key combination
+  </Step>
+  
+  <Step title="Reload the script">
+    Remember to reload the script for changes to take effect (see [Settings](/configuration/settings) for reload instructions)
+  </Step>
+</Steps>
+
+## Hint visibility
+
+You can control whether hints for these shortcuts are displayed in the tiler:
+
+- **Show text hint** (Popup Grid) - Display keyboard shortcuts below the tiler
+- **Show overlay text hint** (Overlay) - Display keyboard shortcuts inside the current tile
+
+These options can be toggled in the settings to reduce visual clutter while still keeping shortcuts available.
+
+## Special layout shortcuts
+
+When using special layouts in the Popup Grid, additional shortcuts may be available:
+
+- **FILL** - Automatically fills the largest or smallest empty space
+- **SPLIT** - Splits the largest window vertically or horizontally
+- **MAXIMIZE** - Maximizes the window (returns to previous size when moved)
+- **MINIMIZE** - Minimizes the window
+- **FULLSCREEN** - Sets window to fullscreen (may need Alt+F3 to exit)
+- **KEEP ABOVE/BELOW** - Toggles window layer
+- **NO TITLEBAR AND FRAME** - Removes window decorations (may need Alt+F3 to restore)
+- **CLOSE** - Closes the window
+
+<Warning>
+  Some special layouts (like FULLSCREEN and NO TITLEBAR AND FRAME) may require **Alt+F3** to access the window menu for reverting changes.
+</Warning>

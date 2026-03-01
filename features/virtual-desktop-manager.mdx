@@ -1,0 +1,103 @@
+---
+title: Virtual desktop manager
+description: Manage virtual desktops, move windows between desktops, and streamline your workspace organization
+---
+
+MouseTiler includes a powerful virtual desktop manager that lets you organize windows across multiple virtual desktops with ease. You can quickly add or remove desktops, move applications between them, and configure automatic cleanup of empty desktops.
+
+## Adding virtual desktops
+
+You can create new virtual desktops on the fly while tiling windows:
+
+<Steps>
+  <Step title="Start moving a window">
+    Click and drag a window's titlebar to begin moving it. The tiler interface will appear.
+  </Step>
+  
+  <Step title="Access the virtual desktop bar">
+    At the bottom of the popup tiler, you'll see a row showing all your current virtual desktops.
+  </Step>
+  
+  <Step title="Create a new desktop">
+    If the "Add Virtual Desktop" button is enabled in settings, you'll see a "+" button at the end of the virtual desktop list. Hover over it and drop your window to create a new desktop.
+  </Step>
+</Steps>
+
+<Info>
+The "Add Virtual Desktop" button can be toggled in the MouseTiler settings under `showAddVirtualDesktopButton`.
+</Info>
+
+## Moving windows between desktops
+
+MouseTiler provides intuitive drag-and-drop support for moving windows across virtual desktops:
+
+1. **Drag a window** to start the tiling interface
+2. **Hover over a virtual desktop** in the desktop bar at the bottom of the popup tiler
+3. **Drop the window** to move it to that desktop
+
+You can configure what happens when you drop a window on a different desktop:
+
+<CardGroup cols={2}>
+  <Card title="Move and stay" icon="arrow-right">
+    The window moves to the target desktop and you remain on your current desktop (default behavior).
+  </Card>
+  
+  <Card title="Move and follow" icon="arrows-turn-to-dots">
+    The window moves to the target desktop and you switch to that desktop automatically.
+  </Card>
+</CardGroup>
+
+### Virtual desktop hover time
+
+You can set a hover delay before automatically switching to a virtual desktop while dragging. Configure `virtualDesktopHoverTime` in settings (default is 500ms). Set it to 0 for instant switching.
+
+## Auto-remove empty desktops
+
+MouseTiler can automatically clean up virtual desktops that no longer contain any windows:
+
+<Steps>
+  <Step title="Enable auto-remove">
+    In MouseTiler settings, enable `autoRemoveEmptyVirtualDesktops`.
+  </Step>
+  
+  <Step title="Close or move windows">
+    When you close a window or move it to another desktop, MouseTiler checks if the source desktop is empty.
+  </Step>
+  
+  <Step title="Automatic cleanup">
+    If the desktop is empty, it's automatically removed from your workspace.
+  </Step>
+</Steps>
+
+<Warning>
+This feature is disabled by default to prevent unexpected desktop removal. Enable it only if you prefer automatic workspace cleanup.
+</Warning>
+
+## Virtual desktop drop actions
+
+You can configure how windows behave when dropped on a virtual desktop using the `virtualDesktopDropAction` setting:
+
+- **Action 0 (default)**: Move the window to the target desktop at its current position
+- **Action 1**: Move the window and maximize it on the target desktop
+
+## Configuration options
+
+Key settings for virtual desktop management:
+
+| Setting | Description | Default |
+|---------|-------------|----------|
+| `virtualDesktopVisibility` | When to show the virtual desktop bar (0=always, 1=only when multiple desktops exist, 2=never) | 0 |
+| `virtualDesktopDropAction` | What happens when dropping a window (0=move, 1=move and maximize) | 0 |
+| `virtualDesktopHoverTime` | Delay in milliseconds before switching desktops while hovering | 500 |
+| `showAddVirtualDesktopButton` | Show the "+" button to create new desktops | true |
+| `autoRemoveEmptyVirtualDesktops` | Automatically delete empty virtual desktops | false |
+| `moveBackOnDrop` | Return to original desktop after dropping a window | false |
+| `moveBackOnTile` | Return to original desktop after tiling a window | false |
+
+## Keyboard shortcuts
+
+Use the `shortcutMoveOnDrop` setting to toggle whether you return to your original desktop after moving a window (default: `Meta+Ctrl+V`).
+
+<Note>
+Virtual desktop management works seamlessly with auto-tiling. When you move a window to a different desktop, it's automatically removed from the auto-tiler on the source desktop and can be added to the auto-tiler on the target desktop.
+</Note>

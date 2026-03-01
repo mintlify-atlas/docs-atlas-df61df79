@@ -1,80 +1,129 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: Quickstart
+description: Get up and running with MouseTiler in minutes
 ---
 
-## Get started in three steps
+# Quick start guide
 
-Get your documentation site running locally and make your first customization.
-
-### Step 1: Set up your local environment
-
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
-</CardGroup>
+This guide will help you tile your first window with MouseTiler using the Grid Tiler, the simplest and most intuitive tiling mode.
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+  Make sure you've already [installed MouseTiler](/installation) before proceeding.
 </Note>
+
+## Tile your first window with Grid Tiler
+
+The Grid Tiler is the fastest way to start tiling windows. It activates automatically when you move a window.
+
+<Steps>
+  <Step title="Grab a window">
+    Click and hold the title bar of any window to start dragging it.
+  </Step>
+
+  <Step title="Move the window slightly">
+    Move the window just a few pixels. The Grid Tiler popup will appear automatically.
+    
+    <img src="/assets/popup_tiler.png" alt="Grid Tiler popup" />
+  </Step>
+
+  <Step title="Hover over a tile">
+    Move your mouse over any tile in the grid. The tile will highlight to show where your window will be placed.
+  </Step>
+
+  <Step title="Release to tile">
+    Release the mouse button to place your window in the selected tile. Your window will automatically resize and position itself!
+  </Step>
+</Steps>
+
+That's it! You've just tiled your first window with MouseTiler.
+
+## Try different layouts
+
+The Grid Tiler comes with multiple predefined layouts. To switch between them:
+
+1. While dragging a window, move your mouse to the **top row** of the Grid Tiler popup
+2. Each option in the top row represents a different layout
+3. Hover over a layout to preview it, then select a tile below
+
+<img src="/assets/popup_tiler_all.png" alt="Multiple Grid Tiler layouts" />
+
+Common layouts include:
+- **1x1**: Full screen
+- **2x1**: Left and right halves
+- **3x1**: Three vertical columns
+- **2x2**: Four equal quadrants
+- **Custom layouts**: Many specialized layouts for different workflows
+
+## Essential keyboard shortcuts
+
+While MouseTiler is designed for mouse-based tiling, keyboard shortcuts can enhance your workflow:
+
+### Toggle input mode
+
+```
+Ctrl+Alt+I
+```
+
+Switch between mouse cursor mode and window-based input. Useful for different input devices like stylus or touch.
+
+### Center in tile
+
+```
+Meta+Ctrl+C
+```
+
+Keep your window's current size but center it within a tile. Perfect for windows that don't need to fill the entire tile.
+
+<img src="/assets/center_in_tile_v1.gif" alt="Center in tile demo" />
+
+### Toggle tiling suggestions
+
+```
+Meta+Ctrl+S
+```
+
+Show or hide window tiling suggestions.
+
+## Quick tips
+
+<CardGroup cols={2}>
+  <Card title="Special actions" icon="wand-magic-sparkles">
+    Look for special tiles like "Fill", "Maximize", "Minimize", and "Close" in your layouts for quick window actions.
+  </Card>
+  <Card title="Multi-monitor support" icon="display">
+    The Grid Tiler works seamlessly across multiple monitors. Drag windows between screens and tile them independently.
+  </Card>
+  <Card title="Customize layouts" icon="pen">
+    Access the configuration panel to create your own custom layouts or use the [web-based layout editor](https://rxweb.epizy.com/mousetiler/editor.html).
+  </Card>
+  <Card title="Touch and stylus" icon="pen-fancy">
+    MouseTiler works with Wacom tablets and touch screens. Use `Ctrl+Alt+I` to switch input modes for better accuracy.
+  </Card>
+</CardGroup>
+
+## What's next?
+
+Now that you've mastered the basics of the Grid Tiler, explore more advanced features:
+
+<CardGroup cols={2}>
+  <Card title="Overlay Tiler" icon="layer-group" href="/tiling-modes/overlay-tiler">
+    Learn about the full-screen overlay tiling mode, similar to FancyZones
+  </Card>
+  <Card title="Auto Tiling" icon="robot" href="/tiling-modes/auto-tiling">
+    Discover automatic window arrangement with carousel and stacking layouts
+  </Card>
+  <Card title="Virtual Desktops" icon="desktop" href="/features/virtual-desktop-manager">
+    Manage virtual desktops and move windows between them
+  </Card>
+  <Card title="Keyboard Shortcuts" icon="keyboard" href="/configuration/keyboard-shortcuts">
+    View the complete list of keyboard shortcuts for power users
+  </Card>
+</CardGroup>
+
+## Need help?
+
+If you run into any issues:
+
+- Check the [troubleshooting guide](/reference/troubleshooting)
+- Join the [Discord community](https://discord.gg/Js6AYsnQQj) for support
+- Review the [FAQ](/reference/faq) for common questions

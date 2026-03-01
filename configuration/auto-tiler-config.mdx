@@ -1,0 +1,305 @@
+---
+title: Auto-tiler configuration
+description: Detailed configuration reference for MouseTiler's auto-tiling feature
+---
+
+MouseTiler's auto-tiler automatically arranges and tiles windows according to predefined layouts. You can configure up to three different auto-tiler layouts and switch between them on the fly.
+
+## Auto-tiler layout format
+
+Auto-tiler configurations consist of two parts:
+
+1. **Configuration options** (optional first line in JSON format)
+2. **Layout definitions** (one per line, describing window arrangements)
+
+### Basic structure
+
+```
+{"carousel":true,"focusAction":0}
+0:0,0,100,100
+0:0,0,100,100+1:100,0,100,100
+-1:-100,0,100,100+0:0,0,100,100+1:100,0,100,100
+```
+
+- **Line 1** (optional): Configuration JSON
+- **Line 2+**: Layout for 1 window, 2 windows, 3 windows, etc.
+
+### Layout syntax
+
+Each layout line defines window positions using this format:
+
+```
+index:x,y,width,height
+```
+
+- **index**: Window priority (`0` = primary, `1` = secondary, `-1` = last, `*` = fixed)
+- **x, y, width, height**: Position and size in percentage, fractions, or pixels
+
+Multiple windows are separated by `+`:
+
+```
+0:25,0,50,100+1:75,0,25,100
+```
+
+## Configuration options
+
+All configuration options are placed in a JSON object on the first line.
+
+<ParamField path="carousel" type="boolean" default="system settings value">
+  Enable carousel mode for infinite scrolling
+  
+  - `true` - Windows can scroll infinitely left/right
+  - `false` - Windows only scroll when there are more windows than tiles
+  
+  **Note:** Will be forced to `true` if any negative tile indices are used
+</ParamField>
+
+<ParamField path="clip" type="boolean" default="true if carousel, otherwise false">
+  Control preview clipping in popup grid
+  
+  - `true` - Clip preview in popup grid (costly to render)
+  - `false` - No clipping, tiles can render outside popup grid (use for multi-screen layouts)
+</ParamField>
+
+<ParamField path="autoTileAction" type="integer" default="system settings value">
+  Define where new windows are inserted
+  
+  - `0` - Insert before
+  - `1` - Insert after
+</ParamField>
+
+<ParamField path="autoTileIndex" type="integer" default="system settings value">
+  Index position for auto-tile insertion
+  
+  Range: `-1` to `16`
+</ParamField>
+
+<ParamField path="focusAction" type="integer" default="system settings value">
+  Action when a window is focused
+  
+  - `0` - Scroll to focused window
+  - `1` - Insert focused window at index
+  - `2` - Insert focused window at index - ignore primary
+  - `3` - Swap place with window at index
+  - `4` - Swap place with window at index - ignore primary
+  - `5` - Do nothing
+</ParamField>
+
+<ParamField path="focusIndex" type="integer" default="system settings value">
+  Index for focus action
+  
+  Range: `-1` to `16`
+</ParamField>
+
+<ParamField path="minimizedFocusAction" type="integer" default="system settings value">
+  Action when a minimized window is focused
+  
+  - `0` - Scroll as close as possible
+  - `1` - Insert before window at index
+  - `2` - Swap place with window at index
+</ParamField>
+
+<ParamField path="minimizedFocusIndex" type="integer" default="system settings value">
+  Index for minimized focus action
+  
+  Range: `-1` to `16`
+</ParamField>
+
+<ParamField path="dragSwapAction" type="integer" default="system settings value">
+  Action when dragging windows in auto-tiler
+  
+  - `0` - Insert dragged window at target priority
+  - `1` - Swap places
+</ParamField>
+
+<ParamField path="tileTextMode" type="integer" default="0">
+  How tile indices are displayed
+  
+  - `0` - Human readable index (1 for primary, 2 for secondary, -1 for last, * for fixed)
+  - `1` - Exact index (0 is primary, 1 is secondary, -1 is last, -2 is second to last, * is fixed)
+  - `2` - Simple index (P for primary, * for fixed tiles, other tiles have no text)
+</ParamField>
+
+<ParamField path="sortZ" type="boolean" default="true">
+  Control window stacking order
+  
+  - `true` - Tiles sorted by priority index (lower priority = higher in stack). Focused window always on top.
+  - `false` - Tiles sorted by order (last tile higher). Focused window always on top.
+</ParamField>
+
+<ParamField path="layer" type="integer" default="0">
+  Window layer behavior
+  
+  - `0` - Keep below except active window
+  - `1` - Keep below
+  - `2` - Keep normal
+  - `3` - Keep above
+</ParamField>
+
+## Example configurations
+
+### Single tile carousel
+
+**Multi-monitor friendly**
+
+```
+{"carousel":true}
+0:0,0,100,100
+```
+
+Simplest carousel - each window takes the full screen. Scroll infinitely with Ctrl+Alt+Left/Right.
+
+### Three tile carousel
+
+```
+{"carousel":true}
+0:0,0,100,100
+0:0,0,100,100+1:100,0,100,100
+-1:-100,0,100,100+0:0,0,100,100+1:100,0,100,100
+```
+
+- 1 window: Full screen
+- 2 windows: Current and next
+- 3+ windows: Previous, current, and next (infinite scroll)
+
+### 50% carousel
+
+```
+{"carousel":true,"focusAction":0}
+0:25,0,50,100
+0:25,0,50,100+1:75,0,50,100
+-1:-25,0,50,100+0:25,0,50,100+1:75,0,50,100
+```
+
+Each window takes 50% of screen width, centered. Smooth carousel scrolling effect.
+
+### 3 card stack
+
+**Multi-monitor friendly**
+
+```
+{"carousel":true,"focusAction":0,"tileTextMode":2,"sortZ":false}
+0:4,0,92,100
+1:8,0,92,100+0:4,0,92,100
+-1:0,0,92,100+1:8,0,92,100+0:4,0,92,100
+```
+
+Windows stack like cards with slight offset. Focused window on top.
+
+### 5 card stack
+
+**Multi-monitor friendly**
+
+```
+{"carousel":true,"focusAction":0,"tileTextMode":2,"sortZ":false}
+0:6,0,88,100
+1:12,0,88,100+0:6,0,88,100
+-1:0,0,88,100+1:12,0,88,100+0:6,0,88,100
+-1:0,0,88,100+2:12,0,88,100+1:9,0,88,100+0:6,0,88,100
+-2:0,0,88,100+-1:3,0,88,100+2:12,0,88,100+1:9,0,88,100+0:6,0,88,100
+```
+
+Up to 5 windows visible in a stacked carousel.
+
+### Spiral 4
+
+**Multi-monitor friendly**
+
+```
+0:0,0,100,100
+0:0,0,50,100+1:50,0,50,100
+0:0,0,50,100+1:50,0,50,50+2:50,50,50,50
+0:0,0,50,50+3:0,50,50,50+1:50,0,50,50+2:50,50,50,50
+```
+
+Windows arranged in a spiral pattern:
+- 1 window: Full screen
+- 2 windows: Split vertically
+- 3 windows: Left half, top-right, bottom-right
+- 4 windows: Quadrants
+
+### 50% + 2 stack
+
+**Multi-monitor friendly**
+
+```
+0:0,0,50,100
+0:0,0,50,100+1:50,0,50,100
+0:0,0,50,100+1:50,0,50,50+2:50,50,50,50
+```
+
+Main window takes left 50%, additional windows stack on right:
+- 1 window: Half screen left
+- 2 windows: Left/right split
+- 3+ windows: Left 50%, right side stacked
+
+### 67% + 3 stack
+
+**Multi-monitor friendly**
+
+```
+0:0,0,67,100
+0:0,0,67,100+1:67,0,33,100
+0:0,0,67,100+1:67,0,33,50+2:67,50,33,50
+0:0,0,67,100+1:67,0,33,33+2:67,33,33,34+3:67,67,33,33
+```
+
+Main window takes 67%, up to 3 windows stack in remaining 33%.
+
+### Dynamic carousel with fixed tiles
+
+**Multi-monitor friendly**
+
+```
+{"carousel":true,"focusAction":0}
+*:0,0,25,50+0:25,0,50,100+*:75,0,25,50
+*:0,0,25,50+0:25,0,50,100+*:75,0,25,50+1:75,50,25,50
+*:0,0,25,50+-1:0,50,25,50+0:25,0,50,100+*:75,0,25,50+1:75,50,25,50
+```
+
+Fixed tiles (`*`) stay in corners, carousel windows scroll through center.
+
+## Multi-monitor support
+
+Layouts marked as **"Multi-monitor friendly"** work well across multiple screens because:
+
+- They don't use negative indices that extend off-screen
+- Each window stays within 0-100% screen bounds
+- Tiles don't overlap into adjacent monitors
+
+Non-multi-monitor-friendly layouts (like 50% carousel, 66% carousel) use negative positions or positions >100% which can extend onto other screens.
+
+## Tips for auto-tiler configuration
+
+<Note>
+  **Start with examples** - Use one of the built-in configurations as a starting point and modify it
+</Note>
+
+<Note>
+  **Test incrementally** - Add one window layout line at a time and test with actual windows
+</Note>
+
+<Note>
+  **Use carousel for dynamic workflows** - Carousel mode is perfect when window count varies
+</Note>
+
+<Warning>
+  **Negative indices enable carousel** - Using negative indices (like `-1`) automatically enables carousel mode even if `"carousel":false`
+</Warning>
+
+## Scrolling in auto-tiler
+
+Once configured, you can scroll through auto-tiled windows:
+
+- **Keyboard**: Press **Ctrl+Alt+Left** or **Ctrl+Alt+Right**
+- **Mouse**: Move mouse to left or right screen edge (if enabled in settings)
+
+**Carousel layouts**: Scroll infinitely in either direction
+
+**Normal layouts**: Only scroll when there are more windows than available tiles
+
+## See also
+
+- [Keyboard Shortcuts](/configuration/keyboard-shortcuts) - Auto-tiler keyboard shortcuts
+- [Settings](/configuration/settings) - Auto-tiler system settings
+- [AUTOTILERGUIDE.md](https://github.com/rxappdev/MouseTiler/blob/main/AUTOTILERGUIDE.md) - Full auto-tiler guide in source repository

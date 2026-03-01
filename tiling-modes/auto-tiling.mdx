@@ -1,0 +1,336 @@
+---
+title: Auto-tiling
+description: Automatic window layouts with carousel and stacking modes
+---
+
+Auto-tiling automatically arranges windows into predefined layouts as you open them. MouseTiler supports both carousel-style layouts (infinite scrolling) and stacking layouts (fixed positions).
+
+## Getting started
+
+<Steps>
+
+<Step title="Enable auto-tiling">
+Press **Ctrl+Alt+A** to toggle auto-tiling for the current screen and virtual desktop.
+</Step>
+
+<Step title="Add windows">
+Windows will automatically tile as you open them according to the selected layout.
+</Step>
+
+<Step title="Navigate windows">
+Scroll through tiled windows:
+- **Ctrl+Alt+Left/Right**: Navigate between windows
+- **Screen edges**: Move mouse to left/right edge to scroll
+</Step>
+
+</Steps>
+
+<Note>
+Each screen and virtual desktop has its own independent auto-tiler.
+</Note>
+
+## Keyboard shortcuts
+
+- **Ctrl+Alt+A**: Toggle auto-tiling on/off
+- **Ctrl+Alt+X**: Switch to previous auto-tiler layout
+- **Ctrl+Alt+C**: Switch to next auto-tiler layout
+- **Ctrl+Alt+Left**: Scroll to previous window
+- **Ctrl+Alt+Right**: Scroll to next window
+
+## Carousel vs stacking layouts
+
+### Carousel layouts
+
+Carousel layouts allow infinite scrolling through windows:
+
+- Windows cycle continuously (no start or end)
+- Perfect for working with many windows
+- Scroll left or right indefinitely
+- Indicated by `"carousel": true` in configuration
+
+### Stacking layouts
+
+Stacking layouts have fixed positions:
+
+- Each window has a specific tile
+- Extra windows become minimized
+- Scrolling is limited to available tiles
+- Better for fixed workspace arrangements
+
+## Screen edge scrolling
+
+When enabled, move your mouse to screen edges to navigate:
+
+<Note>
+To remove the visual screen edge highlighting: Go to **System Settings** > **Window Management** > **Desktop Effects** and disable "Highlight Screen Edges and Hot Corners".
+</Note>
+
+## Preset layouts
+
+MouseTiler includes many preset auto-tiling configurations. Here are some popular options:
+
+<Accordion title="Single tile carousel">
+
+**Multi-monitor friendly**: Yes
+
+One window at a time, fullscreen.
+
+```
+{"carousel":true}
+0:0,0,100,100
+```
+
+![Single Tile Carousel](/assets/auto_1.png)
+
+</Accordion>
+
+<Accordion title="Three tile carousel">
+
+**Multi-monitor friendly**: No
+
+Improved scrolling experience with three visible windows.
+
+```
+{"carousel":true}
+0:0,0,100,100
+0:0,0,100,100+1:100,0,100,100
+-1:-100,0,100,100+0:0,0,100,100+1:100,0,100,100
+```
+
+![Three Tile Carousel](/assets/auto_2.png)
+
+</Accordion>
+
+<Accordion title="50% carousel">
+
+**Multi-monitor friendly**: No
+
+Two windows side-by-side with carousel navigation.
+
+```
+{"carousel":true,"focusAction":0}
+0:25,0,50,100
+0:25,0,50,100+1:75,0,50,100
+-1:-25,0,50,100+0:25,0,50,100+1:75,0,50,100
+```
+
+![50% Carousel](/assets/auto_3.png)
+
+</Accordion>
+
+<Accordion title="3 card stack">
+
+**Multi-monitor friendly**: Yes
+
+Stacked cards with focused window on top.
+
+```
+{"carousel":true,"focusAction":0,"tileTextMode":2,"sortZ":false}
+0:4,0,92,100
+1:8,0,92,100+0:4,0,92,100
+-1:0,0,92,100+1:8,0,92,100+0:4,0,92,100
+```
+
+![3 Card Stack](/assets/auto_6.png)
+
+</Accordion>
+
+<Accordion title="Spiral 4">
+
+**Multi-monitor friendly**: Yes
+
+Four windows in a spiral arrangement.
+
+```
+0:0,0,100,100
+0:0,0,50,100+1:50,0,50,100
+0:0,0,50,100+1:50,0,50,50+2:50,50,50,50
+0:0,0,50,50+3:0,50,50,50+1:50,0,50,50+2:50,50,50,50
+```
+
+![Spiral 4](/assets/auto_8.png)
+
+</Accordion>
+
+<Accordion title="50% + 2 stack">
+
+**Multi-monitor friendly**: Yes
+
+Main window at 50% with stacked secondary windows.
+
+```
+0:0,0,50,100
+0:0,0,50,100+1:50,0,50,100
+0:0,0,50,100+1:50,0,50,50+2:50,50,50,50
+```
+
+![50% + 2 Stack](/assets/auto_10.png)
+
+</Accordion>
+
+<Accordion title="67% + 3 stack">
+
+**Multi-monitor friendly**: Yes
+
+Large main window (67%) with three stacked windows.
+
+```
+0:0,0,67,100
+0:0,0,67,100+1:67,0,33,100
+0:0,0,67,100+1:67,0,33,50+2:67,50,33,50
+0:0,0,67,100+1:67,0,33,33+2:67,33,33,34+3:67,67,33,33
+```
+
+![67% + 3 Stack](/assets/auto_13.png)
+
+</Accordion>
+
+<Accordion title="50% + 50% carousel">
+
+**Multi-monitor friendly**: No
+
+Two side-by-side windows with carousel scrolling.
+
+```
+{"carousel":true,"focusAction":5}
+0:0,0,50,100
+0:0,0,50,100+1:50,0,50,100
+-1:-50,0,50,100+0:0,0,50,100+1:50,0,50,100
+-1:-50,0,50,100+0:0,0,50,100+1:50,0,50,100+2:100,0,50,100
+```
+
+![50% + 50% Carousel](/assets/auto_18.png)
+
+</Accordion>
+
+## Layout configuration syntax
+
+Each line in a layout configuration represents a different window count state:
+
+```
+0:0,0,100,100
+0:0,0,50,100+1:50,0,50,100
+```
+
+**Line 1**: Layout for 1 window  
+**Line 2**: Layout for 2 windows
+
+Each tile is formatted as:
+```
+index:x,y,width,height
+```
+
+- **index**: Window priority (0 = primary, 1 = secondary, -1 = last, * = fixed)
+- **x, y**: Position as percentage or pixels
+- **width, height**: Size as percentage or pixels
+
+### Configuration options
+
+Add a JSON configuration object on the first line:
+
+<Accordion title="carousel">
+
+```json
+"carousel": true | false
+```
+
+Enable infinite scrolling through windows.
+
+**Default**: System settings value (forced to `true` if negative indices are used)
+
+</Accordion>
+
+<Accordion title="focusAction">
+
+```json
+"focusAction": 0 | 1 | 2 | 3 | 4 | 5
+```
+
+- **0**: Scroll to focused window
+- **1**: Insert focused window at index
+- **2**: Insert focused window at index - ignore primary
+- **3**: Swap place with window at index
+- **4**: Swap place with window at index - ignore primary
+- **5**: Do nothing
+
+**Default**: System settings value
+
+</Accordion>
+
+<Accordion title="autoTileAction">
+
+```json
+"autoTileAction": 0 | 1
+```
+
+- **0**: Insert new windows before index
+- **1**: Insert new windows after index
+
+**Default**: System settings value
+
+</Accordion>
+
+<Accordion title="dragSwapAction">
+
+```json
+"dragSwapAction": 0 | 1
+```
+
+- **0**: Insert dragged window at target priority
+- **1**: Swap places with target window
+
+**Default**: System settings value
+
+</Accordion>
+
+<Accordion title="tileTextMode">
+
+```json
+"tileTextMode": 0 | 1 | 2
+```
+
+- **0**: Show human readable index (1 for primary, 2 for secondary, -1 for last, * for fixed)
+- **1**: Show exact index (0 for primary, 1 for secondary, -1 for last, -2 for second to last)
+- **2**: Show simple index (P for primary, * for fixed tiles, no text for others)
+
+**Default**: 0
+
+</Accordion>
+
+<Accordion title="sortZ">
+
+```json
+"sortZ": true | false
+```
+
+- **true**: Sort tiles by priority index (lower priority = higher in z-order)
+- **false**: Sort by order (last tile on top)
+
+Focused window is always on top regardless of setting.
+
+**Default**: true
+
+</Accordion>
+
+<Accordion title="layer">
+
+```json
+"layer": 0 | 1 | 2 | 3
+```
+
+- **0**: Keep below except active window
+- **1**: Keep below
+- **2**: Keep normal
+- **3**: Keep above
+
+**Default**: 0
+
+</Accordion>
+
+## Tips
+
+- Use carousel layouts for many windows, stacking for fixed workspaces
+- Each screen and virtual desktop maintains its own auto-tiler state
+- Configure multiple auto-tilers (up to 3) and switch between them with Ctrl+Alt+X/C
+- Multi-monitor friendly layouts work better across multiple screens
+- Use the Grid Tiler's auto-tile special tiles to toggle auto-tiling for specific windows

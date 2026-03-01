@@ -1,0 +1,133 @@
+---
+title: Overlay tiler
+description: Full-screen overlay tiling with multi-tile spanning
+---
+
+The Overlay Tiler displays a full-screen overlay of tiles when you move a window, similar to Microsoft PowerToys FancyZones. It allows you to place windows into single tiles or span multiple tiles for custom layouts.
+
+![Overlay Tiler](/assets/overlay_tiler.png)
+
+## How it works
+
+When you start moving a window with the Overlay Tiler active, a full-screen grid of tiles appears. Hover over any tile to highlight it, then release to place your window.
+
+<Steps>
+
+<Step title="Start moving a window">
+Click and drag any window's title bar to start moving it.
+</Step>
+
+<Step title="View the overlay">
+The full-screen tile overlay appears automatically, showing all available tile positions.
+</Step>
+
+<Step title="Select a tile">
+Move your cursor over the desired tile - it will highlight when selected.
+</Step>
+
+<Step title="Release to place">
+Release the mouse button to tile your window in the selected position.
+</Step>
+
+</Steps>
+
+## Multi-tile spanning
+
+The Overlay Tiler's most powerful feature is the ability to span multiple tiles:
+
+<Steps>
+
+<Step title="Select first tile">
+Hover over the first tile where you want your window to start.
+</Step>
+
+<Step title="Activate spanning mode">
+Press the configured shortcut (default: show all/span) to mark this tile as the starting point.
+</Step>
+
+<Step title="Select end tile">
+Move to another tile - all tiles between your start and end points will highlight.
+</Step>
+
+<Step title="Release to apply">
+Release the mouse button to tile your window across the spanned area.
+</Step>
+
+</Steps>
+
+<Note>
+Spanning allows you to create custom window sizes by selecting rectangular regions across multiple tiles.
+</Note>
+
+## Configuration options
+
+### Screen edge margin
+
+Set the distance between the overlay and screen edges:
+
+```
+Default: Configurable in settings
+```
+
+This creates padding around the overlay, making it easier to see and work with.
+
+### Polling rate
+
+Adjust how frequently the overlay updates cursor position:
+
+- Lower values: More responsive but higher CPU usage
+- Higher values: Less responsive but lower CPU usage
+
+### Text hints
+
+Configure which hints appear on tiles:
+
+- **Show hint hint**: Display tips about configuring the tiler
+- **Show all/span hint**: Show the shortcut for spanning tiles
+- **Visibility hint**: Display the visibility toggle shortcut
+- **Input type hint**: Show current input mode (mouse/window)
+- **Center in tile hint**: Display center-in-tile status
+- **Change mode hint**: Show the mode switching shortcut
+
+## When to use overlay vs grid tiler
+
+### Use Overlay Tiler when:
+
+- You want to see all available tiles at once
+- You need to span windows across multiple tiles
+- You prefer a full-screen visual reference
+- You're working with complex custom layouts
+
+### Use Grid Tiler when:
+
+- You want minimal visual interference
+- You work with a small set of frequently-used layouts
+- You prefer quick access near your cursor
+- You want to see virtual desktop options alongside layouts
+
+## Keyboard shortcuts
+
+While the Overlay Tiler is active:
+
+- **Show all/span**: Start or stop spanning mode
+- **Center in tile**: Center window in tile without resizing (Meta+Ctrl+C)
+- **Visibility**: Toggle overlay visibility
+- **Change mode**: Switch to Grid Tiler
+- **Input type**: Toggle between mouse and window cursor (Ctrl+Alt+I)
+
+## Center in tile
+
+Both tilers support centering windows within tiles without resizing:
+
+<Note>
+Press Meta+Ctrl+C before releasing your window to center it in the selected tile (or spanned area) while maintaining its current size.
+</Note>
+
+## Custom layouts
+
+Define your own overlay layouts using manual text configuration or the [web layout editor](https://rxweb.epizy.com/mousetiler/editor.html).
+
+Each tile is defined by:
+- `x`, `y`: Position (percentage or pixels)
+- `w`, `h`: Width and height (percentage or pixels)
+- `aX`, `aY`: Anchor points for alignment

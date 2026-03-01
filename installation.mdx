@@ -1,0 +1,152 @@
+---
+title: Installation
+description: Install MouseTiler from the KDE Store or from a downloaded file
+---
+
+# Installation
+
+MouseTiler can be installed in two ways: directly from the KDE Store (recommended) or from a downloaded `.kwinscript` file.
+
+## From KDE Store (Recommended)
+
+<Steps>
+  <Step title="Open KWin Scripts settings">
+    Navigate to `System Settings` > `Window Management` > `KWin Scripts`.
+  </Step>
+
+  <Step title="Click Get New Scripts">
+    Click the `Get New...` button in the upper right corner.
+    
+  </Step>
+
+  <Step title="Search for MouseTiler">
+    Search for `Mouse Tiler` and click on it.
+    
+    
+    <Note>
+      Step 1 in the screenshot only applies with small window sizes.
+    </Note>
+  </Step>
+
+  <Step title="Install the script">
+    Click the `Install` button.
+    
+  </Step>
+
+  <Step title="Enable MouseTiler">
+    Check the box next to `Mouse Tiler` to enable it.
+    
+  </Step>
+
+  <Step title="Apply changes">
+    Click the `Apply` button to activate the script.
+    
+  </Step>
+
+  <Step title="Configure settings (optional)">
+    Click the configure icon to customize MouseTiler settings to your liking.
+    
+  </Step>
+</Steps>
+
+<Warning>
+  Due to a KDE limitation, changing settings requires reloading the script. See [Changing settings](#changing-settings) below for instructions.
+</Warning>
+
+## From file
+
+If you prefer to install from a downloaded file, follow these steps:
+
+<Steps>
+  <Step title="Download the script">
+    Download the `mousetiler.kwinscript` file from the [KDE Store](https://store.kde.org/p/2334027) or [GitHub releases](https://github.com/rxappdev/MouseTiler).
+  </Step>
+
+  <Step title="Open KWin Scripts settings">
+    Navigate to `System Settings` > `Window Management` > `KWin Scripts`.
+  </Step>
+
+  <Step title="Install from file">
+    Click the `Install from File...` button in the upper right corner.
+    
+  </Step>
+
+  <Step title="Select the file">
+    Browse to the downloaded `.kwinscript` file and click `Open`.
+  </Step>
+
+  <Step title="Enable MouseTiler">
+    Check the box next to `Mouse Tiler` to enable it.
+    
+  </Step>
+
+  <Step title="Apply changes">
+    Click the `Apply` button to activate the script.
+    
+  </Step>
+
+  <Step title="Configure settings (optional)">
+    Click the configure icon to customize MouseTiler settings to your liking.
+    
+  </Step>
+</Steps>
+
+## Changing settings
+
+<Warning>
+  **Important:** Due to a bug in KDE, changing user configuration requires reloading the script. A system reboot also works, but the method below is faster.
+</Warning>
+
+To make setting changes take effect, reload the script as follows:
+
+<Steps>
+  <Step title="Disable MouseTiler">
+    In `System Settings` > `Window Management` > `KWin Scripts`, uncheck the `Mouse Tiler` checkbox.
+    
+  </Step>
+
+  <Step title="Apply the disable">
+    Click the `Apply` button.
+    
+  </Step>
+
+  <Step title="Re-enable MouseTiler">
+    Check the `Mouse Tiler` checkbox again.
+    
+  </Step>
+
+  <Step title="Apply the enable">
+    Click the `Apply` button to reload the script with your new settings.
+    
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+If you encounter issues during installation:
+
+### Script won't enable
+
+- Make sure you're running KDE Plasma 6 or later
+- Try restarting KDE with `kquitapp6 plasmashell && kstart plasmashell` in Konsole
+- Check the KWin logs with `journalctl -f -t kwin_wayland` (Wayland) or `journalctl -f -t kwin_x11` (X11)
+
+### Disable from command line
+
+If you need to disable MouseTiler from the command line (for example, if you encounter a crash), open a console with `Ctrl+Alt+F5` and run:
+
+```bash
+kwriteconfig6 --file kwinrc --group Plugins --key mousetilerEnabled false
+qdbus org.kde.KWin /KWin reconfigure
+```
+
+### Remove settings manually
+
+If you need to manually erase MouseTiler data:
+
+- Application/window data is stored in `~/.config/kde.org/kwin.conf`
+- User settings are stored in `~/.config/kwinrc` under `[Script-mousetiler]`
+
+## Next steps
+
+Now that MouseTiler is installed, learn how to use it in the [quickstart guide](/quickstart) or explore the [tiling modes](/tiling-modes/grid-tiler) in detail.

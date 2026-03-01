@@ -1,0 +1,222 @@
+---
+title: Changelog
+description: Version history and updates for MouseTiler
+---
+
+Track the latest updates, features, and improvements to MouseTiler.
+
+## Current version
+
+### Version 6.1.1
+
+The latest stable release of MouseTiler. This version includes all core features:
+
+- Two mouse tiling modes (Popup Grid and Overlay)
+- Virtual desktop management
+- Auto tiling (carousel and stacking styles)
+- Manual and web-based layout configuration
+- Multi-monitor support
+- System theme integration and custom color themes
+- Over 20 customization settings
+- Support for mouse, stylus, and touch input (including Wacom)
+
+<Note>
+  MouseTiler uses semantic versioning (MAJOR.MINOR.PATCH). Version 6.1.1 indicates KDE Plasma 6 compatibility with incremental feature updates and bug fixes.
+</Note>
+
+## Development model
+
+### Donation-based features
+
+As of February 2026, new features are developed based on community donations. This model ensures sustainable development while keeping the extension free to use.
+
+<Info>
+  **Bug fixes and KDE compatibility updates remain free for everyone.** Only new feature development is donation-based.
+</Info>
+
+#### How it works
+
+<Steps>
+  <Step title="Vote on features">
+    Community members vote on which features they want next through the [WakaTime poll](https://wakatime.com/polls/0e8054f0-e168-4f00-b31b-ed6c17bd51af)
+  </Step>
+  <Step title="Contribute via donations">
+    Donations accumulate toward the top-voted feature's goal
+  </Step>
+  <Step title="Feature implementation">
+    Once the donation goal is reached, the developer implements that feature
+  </Step>
+  <Step title="Release to everyone">
+    The new feature is released for free to all MouseTiler users
+  </Step>
+</Steps>
+
+#### Feature sizes and goals
+
+Features are categorized by development time:
+
+| Size | Time | Donation Goal |
+|------|------|---------------|
+| S | Half day | $250 |
+| M | 1 day | $490 |
+| L | 2 days | $970 |
+| XL | 3-5 days | $1,900 |
+| XXL | 6-10 days | $3,700 |
+
+<Note>
+  Current donation amount: **$215** (as of last update)
+  
+  [Vote on features](https://wakatime.com/polls/0e8054f0-e168-4f00-b31b-ed6c17bd51af) to help decide what gets implemented next!
+</Note>
+
+## Planned features
+
+The community is voting on numerous planned features. Here are some of the top-voted items:
+
+<AccordionGroup>
+  <Accordion title="Keyboard tiling shortcuts (M - 1 day)">
+    Add keyboard shortcuts for tiling and moving already-tiled windows. For example, `Ctrl+Meta+Num 4` to move a window left in the current layout. Includes directional movement (left, right, up, down) with customizable keybindings.
+  </Accordion>
+
+  <Accordion title="Custom size split tile (S - Half day)">
+    Make it possible to use custom sizes for split tiles (SPECIAL_SPLIT_HORIZONTAL and SPECIAL_SPLIT_VERTICAL), such as 70%/30% instead of the default 50%/50%.
+  </Accordion>
+
+  <Accordion title="Portrait mode display setting (S - Half day)">
+    Add a setting to invert width/height on portrait monitors, optimizing the tiler display for vertical orientations.
+  </Accordion>
+
+  <Accordion title="Per tile modifiers (M - 1 day)">
+    Add per-tile modifiers so you can both tile and perform special operations at once. Examples include: center in tile, fullscreen, keep above, keep below, or close. Visual hints would show what each tile does (C for center, F for fullscreen, etc.).
+  </Accordion>
+
+  <Accordion title="Per screen layout configuration (L - 2 days)">
+    For advanced users who want different tiling options per screen in multi-monitor setups.
+  </Accordion>
+
+  <Accordion title="Snap adjacent tiles / resize together (XL - 3-5 days)">
+    Resize adjacent windows together, add boundaries so you resize until reaching a new boundary, and resize windows below if edges match the currently resized edge.
+  </Accordion>
+
+  <Accordion title="Maximize/Minimize restore action (L - 2 days)">
+    Decide where windows go after being manually maximized or minimized and then restored. Options include inserting at exact index, scrolling to restored window, or inserting before/after specific windows.
+  </Accordion>
+
+  <Accordion title="Multi-layout web editor (XL - 3-5 days)">
+    Edit multiple layouts at once in the web editor. Copy your entire layout list from settings, rearrange and edit layouts one by one, then export them back to settings.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  See the complete list of planned features and vote on what you'd like to see next:
+  - [Full planned features document](https://github.com/rxappdev/MouseTiler/blob/main/PLANNEDFEATURES.md)
+  - [Vote on the feature poll](https://wakatime.com/polls/0e8054f0-e168-4f00-b31b-ed6c17bd51af)
+</Tip>
+
+## Completed features (donation-free)
+
+Some features that were originally on the planned list have been implemented for free:
+
+<CardGroup cols={2}>
+  <Card title="Per-screen auto-tiling" icon="display">
+    Enable auto-tiling per screen, virtual desktop, or activity instead of a global on/off switch
+  </Card>
+  <Card title="Activities support" icon="grid">
+    Full support for auto-tiling on KDE Activities
+  </Card>
+  <Card title="Block window restore" icon="ban">
+    Shortcut to block restoring of specific windows (Remember Window Positions feature)
+  </Card>
+</CardGroup>
+
+## Development timeline
+
+<Timeline>
+  <TimelineEvent title="Initial development" date="September 2025">
+    Development started on the first prototype of MouseTiler
+  </TimelineEvent>
+  <TimelineEvent title="Public release" date="November 2025">
+    First public versions released on KDE Store
+  </TimelineEvent>
+  <TimelineEvent title="Feature requests phase" date="December 2025">
+    Community began requesting features for various use cases and distributions
+  </TimelineEvent>
+  <TimelineEvent title="Donation model introduced" date="February 2026">
+    Switched to donation-based development model for new features
+  </TimelineEvent>
+  <TimelineEvent title="Current version" date="March 2026">
+    Version 6.1.1 released with full KDE Plasma 6 compatibility
+  </TimelineEvent>
+</Timeline>
+
+## Where to get updates
+
+Stay informed about MouseTiler updates:
+
+<CardGroup cols={2}>
+  <Card title="GitHub" icon="github" href="https://github.com/rxappdev/MouseTiler">
+    Latest releases, source code, and issue tracking
+  </Card>
+  <Card title="KDE Store" icon="kde" href="https://store.kde.org/p/2334027">
+    Official KDE Store page for easy installation
+  </Card>
+  <Card title="Discord" icon="discord" href="https://discord.gg/Js6AYsnQQj">
+    Community discussions, support, and announcements
+  </Card>
+  <Card title="Feature Poll" icon="chart-bar" href="https://wakatime.com/polls/0e8054f0-e168-4f00-b31b-ed6c17bd51af">
+    Vote on upcoming features and see current results
+  </Card>
+</CardGroup>
+
+## Version checking
+
+To check your installed version of MouseTiler:
+
+<Steps>
+  <Step title="Open KWin Scripts">
+    Navigate to System Settings > Window Management > KWin Scripts
+  </Step>
+  <Step title="Find MouseTiler">
+    Look for Mouse Tiler in the list of installed scripts
+  </Step>
+  <Step title="View version">
+    The version number is displayed next to the extension name
+  </Step>
+</Steps>
+
+Alternatively, you can check the metadata file:
+
+```bash
+# Find MouseTiler installation
+find ~/.local/share/kwin/scripts -name "metadata.json" -path "*/mousetiler/*"
+
+# View version in metadata
+cat ~/.local/share/kwin/scripts/mousetiler/metadata.json | grep Version
+```
+
+## Update notifications
+
+<Warning>
+  KDE does not automatically notify you of script updates. Check the KDE Store or GitHub periodically for new releases.
+</Warning>
+
+To update MouseTiler:
+
+1. Visit the KDE Store page or GitHub releases
+2. Check if a newer version is available
+3. Follow the [installation instructions](/installation) to update
+4. Reload the script after updating
+
+## Contributing
+
+MouseTiler is open source under the GPLv3 license. You can contribute by:
+
+- Reporting bugs on [GitHub Issues](https://github.com/rxappdev/MouseTiler/issues)
+- Voting on planned features
+- Donating to support feature development
+- Helping other users on Discord
+- Contributing code via pull requests (for bug fixes)
+
+<Info>
+  The developer has invested over 5 months of full-time work into MouseTiler and Remember Window Positions. Donations help sustain continued development and new features.
+</Info>

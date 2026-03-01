@@ -1,0 +1,208 @@
+---
+title: Multi-monitor support
+description: Configure and use MouseTiler across multiple monitors with per-screen tiling capabilities
+---
+
+MouseTiler provides comprehensive multi-monitor support, allowing you to tile windows independently on each connected display. The tiler automatically detects which screen you're working on and adapts accordingly.
+
+## How multi-monitor support works
+
+MouseTiler treats each monitor as an independent tiling surface:
+
+- The tiler interface appears on the **active screen** (the screen where you're moving the window)
+- Tile layouts apply to the **current screen's dimensions**
+- Auto-tiling configurations can be set **per screen, per virtual desktop, and per activity**
+
+<Info>
+MouseTiler automatically detects screen changes when you drag a window from one monitor to another.
+</Info>
+
+## Per-screen configuration
+
+One of MouseTiler's most powerful features is the ability to configure different auto-tiling layouts for each screen:
+
+<Steps>
+  <Step title="Identify your screen">
+    Each screen is identified by its name (e.g., "HDMI-1", "DP-1", "eDP-1").
+  </Step>
+  
+  <Step title="Configure auto-tiling per screen">
+    Auto-tiler configurations are stored separately for each combination of:
+    - Screen name
+    - Virtual desktop ID
+    - Activity
+  </Step>
+  
+  <Step title="Use different layouts">
+    You can have a different auto-tiling layout on your primary monitor versus your secondary monitor, even within the same virtual desktop.
+  </Step>
+</Steps>
+
+This means you could have:
+- A **50/50 split** on your main monitor for side-by-side work
+- A **spiral layout** on your secondary monitor for auxiliary windows
+- Different layouts on different virtual desktops for context-specific workflows
+
+## Multi-monitor friendly auto-tile layouts
+
+Some auto-tiler layouts are specifically designed to work well across multiple monitors. When reviewing auto-tiler configurations, look for these indicators:
+
+<CardGroup cols={2}>
+  <Card title="✅ Multi-monitor friendly" icon="check" color="#16a34a">
+    These layouts keep windows confined to a single screen, making them ideal for multi-monitor setups.
+  </Card>
+  
+  <Card title="❌ Not multi-monitor friendly" icon="xmark" color="#dc2626">
+    These layouts may position windows off-screen or span multiple monitors. Best used on single-screen setups.
+  </Card>
+</CardGroup>
+
+### Examples of multi-monitor friendly layouts
+
+From the default auto-tiler configurations:
+
+- **SINGLE TILE CAROUSEL**: ✅ Multi-monitor friendly
+- **SPIRAL 4**: ✅ Multi-monitor friendly  
+- **SPIRAL 8**: ✅ Multi-monitor friendly
+- **50% + 2 STACK**: ✅ Multi-monitor friendly
+- **67% + 3 STACK**: ✅ Multi-monitor friendly
+- **3 CARD STACK**: ✅ Multi-monitor friendly
+
+### Layouts that may span screens
+
+- **THREE TILE CAROUSEL**: ❌ Can position tiles off-screen in carousel mode
+- **50% CAROUSEL**: ❌ May overlap multiple monitors
+- **76% CAROUSEL**: ❌ Tiles extend beyond single screen bounds
+
+<Note>
+You can configure these layouts yourself in the auto-tiler settings. Check the `AUTOTILERGUIDE.md` documentation for detailed layout syntax and multi-monitor compatibility notes.
+</Note>
+
+## Best practices for multi-monitor setups
+
+### 1. Configure tiling per screen
+
+Take advantage of per-screen configuration by setting up different tiling strategies for each monitor based on its purpose:
+
+```text Example configuration strategy
+Primary monitor (27", 2560x1440): Master and stack layout for main work
+Secondary monitor (24", 1920x1080): Spiral 4 layout for reference windows  
+Vertical monitor (24" rotated, 1200x1920): Single column stack for chat/docs
+```
+
+### 2. Use screen margins
+
+Set appropriate screen margins in MouseTiler settings (`screenMargin`) to account for:
+- Bezels between monitors
+- Physical gaps in your monitor arrangement
+- Personal preference for edge spacing
+
+### 3. Match tile layouts to screen size
+
+Choose grid densities appropriate for each monitor's resolution:
+
+- **4K monitors**: 3x2 or 4x2 grids work well
+- **1080p monitors**: 2x2 or 3x1 grids prevent tiles from being too small
+- **Ultrawide monitors**: 4x1 or 5x1 horizontal layouts leverage the width
+
+### 4. Consider monitor arrangement
+
+If your monitors are arranged vertically or in an L-shape:
+
+- Position the popup tiler at a comfortable location using the `popupGridAt`, `horizontalAlignment`, and `verticalAlignment` settings
+- Ensure the tiler appears on the screen where you're actively moving the window
+
+### 5. Test window fill and split operations
+
+The `SPECIAL_FILL` and split layouts detect empty space on the **active screen** only:
+
+- **SPECIAL_FILL**: Finds the largest empty area on the current monitor
+- **SPECIAL_SPLIT_HORIZONTAL/VERTICAL**: Splits the largest window on the current monitor
+
+These operations won't accidentally affect windows on other screens.
+
+## Moving windows between monitors
+
+You can move windows between monitors using several methods:
+
+### Drag across screens
+
+1. Start dragging a window
+2. Move your cursor to a different monitor
+3. The tiler interface switches to the new screen
+4. Select a tile on the new monitor
+5. Drop to tile the window on the new screen
+
+### Keyboard shortcuts
+
+KDE Plasma includes built-in shortcuts for moving windows between screens. MouseTiler works seamlessly with these native shortcuts.
+
+<Tip>
+Combine KDE's native window management shortcuts with MouseTiler's tiling features for maximum productivity across multiple monitors.
+</Tip>
+
+## Troubleshooting multi-monitor issues
+
+### Tiler appears on wrong screen
+
+The tiler should appear on the screen where you're dragging the window. If it doesn't:
+
+1. Ensure you're using the latest version of MouseTiler
+2. Check that KDE properly detects all your monitors
+3. Try adjusting the `popupGridAt` setting to position the tiler relative to your cursor or window
+
+### Windows tile to wrong monitor
+
+If windows tile to an unexpected monitor:
+
+- Verify you're dropping the window while your cursor is on the intended monitor
+- Check that the window has fully entered the target monitor's space before dropping
+
+### Auto-tiler spans multiple screens
+
+If your auto-tiler is placing windows across multiple monitors:
+
+- Review your auto-tiler layout configuration
+- Switch to a multi-monitor friendly layout (marked with ✅ in the documentation)
+- Use the "clip" option in auto-tiler configs to constrain tiles to screen boundaries:
+  ```text
+  {"clip":true}
+  ```
+
+### Different DPI scales
+
+If you have monitors with different DPI scaling:
+
+- MouseTiler calculates positions based on logical pixels (scaled coordinates)
+- Tiles should appear at the correct size on each monitor
+- If you experience issues, ensure KDE's display settings correctly configure per-monitor scaling
+
+## Configuration for specific monitor setups
+
+### Dual monitor side-by-side
+
+<Card icon="display" title="Recommended setup">
+  - Use the same tile layouts on both monitors
+  - Enable auto-tiling per screen with complementary layouts
+  - Configure screen margins if there's a noticeable bezel gap
+</Card>
+
+### Triple monitor setup
+
+<Card icon="display" title="Recommended setup">
+  - Main monitor: Master and stack layout for primary work
+  - Left monitor: Communication apps with vertical layout
+  - Right monitor: Reference materials with 2x2 grid
+</Card>
+
+### Laptop + external monitor
+
+<Card icon="laptop" title="Recommended setup">
+  - Laptop screen: Simplified 2x1 or 1x2 layout (smaller screen)
+  - External monitor: Full-featured 3x2 or custom layouts
+  - Consider disabling virtual desktop bar on laptop screen to save space
+</Card>
+
+<Info>
+MouseTiler's per-screen, per-desktop, per-activity configuration means you can have completely different tiling behaviors when docked versus mobile, all without changing settings manually.
+</Info>

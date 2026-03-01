@@ -1,0 +1,146 @@
+---
+title: Troubleshooting
+description: Common issues and solutions for MouseTiler
+---
+
+This page covers common issues you may encounter while using MouseTiler and how to resolve them.
+
+## Common issues
+
+<Accordion title="Settings changes not taking effect">
+  Due to a KDE limitation, configuration changes require reloading the script to take effect. A reboot also works, but the manual reload method is faster.
+
+  To reload the script:
+
+  <Steps>
+    <Step title="Disable MouseTiler">
+      In System Settings > Window Management > KWin Scripts, untick Mouse Tiler
+    </Step>
+    <Step title="Apply changes">
+      Click Apply
+    </Step>
+    <Step title="Re-enable MouseTiler">
+      Tick Mouse Tiler again
+    </Step>
+    <Step title="Apply again">
+      Click Apply to finish the reload
+    </Step>
+  </Steps>
+
+  <Note>
+    This reload process is required after every configuration change you make in the settings dialog.
+  </Note>
+</Accordion>
+
+<Accordion title="Screen edge highlights appearing during auto-tiling">
+  When using the auto-tiler, you may see visual highlighting on screen edges. This is caused by a KDE desktop effect that can be disabled.
+
+  To remove screen edge highlighting:
+
+  <Steps>
+    <Step title="Open Desktop Effects">
+      Navigate to System Settings > Window Management > Desktop Effects
+    </Step>
+    <Step title="Disable the effect">
+      Find and disable "Highlight Screen Edges and Hot Corners"
+    </Step>
+  </Steps>
+</Accordion>
+
+<Accordion title="MouseTiler not responding or crashing">
+  If MouseTiler becomes unresponsive or crashes (which should be rare), you can disable it from the command line without accessing the GUI.
+
+  <Steps>
+    <Step title="Open console">
+      Press `Ctrl+Alt+F5` to open a console
+    </Step>
+    <Step title="Disable the script">
+      Run these commands:
+      ```bash
+      kwriteconfig6 --file kwinrc --group Plugins --key mousetilerEnabled false
+      qdbus org.kde.KWin /KWin reconfigure
+      ```
+    </Step>
+    <Step title="Return to GUI">
+      Press `Ctrl+Alt+F1` or `Ctrl+Alt+F2` to return to your desktop
+    </Step>
+  </Steps>
+
+  <Warning>
+    If you encounter crashes, please report them on the [Discord channel](https://discord.gg/Js6AYsnQQj) or GitHub issues.
+  </Warning>
+</Accordion>
+
+<Accordion title="Tiler not appearing when moving windows">
+  If the tiler doesn't appear when you move windows, check your input mode settings.
+
+  **Quick fix**: Press `Ctrl+Alt+I` to toggle between input modes (mouse/stylus/touch).
+
+  You can also change the default input mode in the MouseTiler settings:
+  - Open System Settings > Window Management > KWin Scripts
+  - Click the configure icon next to Mouse Tiler
+  - Adjust the input mode setting
+  - Remember to reload the script for changes to take effect
+</Accordion>
+
+<Accordion title="Windows not tiling correctly on multi-monitor setup">
+  If you're experiencing issues with multi-monitor setups:
+
+  - Ensure each monitor has proper display settings configured in KDE
+  - Check that your monitors are arranged correctly in System Settings > Display Configuration
+  - Try adjusting the tiler position settings for different monitors
+  - Consider using per-screen layout configurations if available in your version
+
+  <Note>
+    MouseTiler has full multi-monitor support. Most issues are related to display configuration rather than the extension itself.
+  </Note>
+</Accordion>
+
+<Accordion title="Virtual desktop manager not working as expected">
+  If you're having issues with virtual desktop management:
+
+  - Verify that you have virtual desktops enabled in System Settings
+  - Check the Virtual Desktop Manager settings within MouseTiler configuration
+  - Ensure the shortcuts for desktop switching aren't conflicting with other KDE shortcuts
+  - Try the default virtual desktop shortcuts to test functionality
+</Accordion>
+
+## Manually erasing settings
+
+<Warning>
+  Only erase settings manually if you're a developer or experiencing severe configuration issues. This will reset all your MouseTiler preferences.
+</Warning>
+
+MouseTiler stores configuration data in two locations:
+
+**Application/window data**:
+- Location: `~/.config/kde.org/kwin.conf`
+- Look for MouseTiler-related keys in this file
+
+**User settings**:
+- Location: `~/.config/kwinrc`
+- Section: `[Script-mousetiler]`
+
+To manually delete settings:
+
+```bash
+# Remove the Script-mousetiler section from kwinrc
+kwriteconfig6 --file kwinrc --group Script-mousetiler --delete
+
+# Reconfigure KWin to apply changes
+qdbus org.kde.KWin /KWin reconfigure
+```
+
+After erasing settings, you'll need to reconfigure MouseTiler from scratch.
+
+## Getting help
+
+If you encounter issues not covered here:
+
+- Join the official [Discord channel](https://discord.gg/Js6AYsnQQj) to discuss issues, report bugs, or find guides
+- Check the [GitHub repository](https://github.com/rxappdev/MouseTiler) for known issues and updates
+- Review the KDE Store page for community solutions and tips
+
+<Note>
+  When reporting issues, include your KDE Plasma version, distribution, and whether you're using Wayland or X11.
+</Note>

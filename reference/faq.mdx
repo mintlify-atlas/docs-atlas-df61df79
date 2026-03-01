@@ -1,0 +1,223 @@
+---
+title: FAQ
+description: Frequently asked questions about MouseTiler
+---
+
+Find answers to common questions about MouseTiler features, configuration, and usage.
+
+## General questions
+
+<AccordionGroup>
+  <Accordion title="What is MouseTiler?">
+    MouseTiler is a KDE KWin script that enables effortless window tiling by moving your mouse just a few pixels. It provides two tiling modes:
+    
+    - **Popup Grid**: A quick grid that appears when you move a window
+    - **Overlay**: A full-screen overlay similar to Microsoft PowerToys FancyZones
+    
+    You can use one or both modes simultaneously, giving you flexible control over window positioning.
+  </Accordion>
+
+  <Accordion title="What's the difference between Grid Tiler and Overlay Tiler?">
+    **Grid Tiler (Popup)**: A compact grid that appears near your cursor when you start moving a window. It's designed for quick, efficient tiling without covering your screen.
+    
+    **Overlay Tiler**: A full-screen overlay that displays all available tile zones across your entire screen. Similar to FancyZones, it's ideal when you want to see all available positions at once.
+    
+    You can enable both and switch between them, or use only one based on your preference.
+  </Accordion>
+
+  <Accordion title="Does MouseTiler require KDE Plasma 6?">
+    Yes, MouseTiler is built for KDE Plasma 6 and higher. Compatibility with previous versions is unknown and not officially supported. Make sure you're running Plasma 6+ before installing.
+  </Accordion>
+
+  <Accordion title="Does it work on Wayland and X11?">
+    Yes! MouseTiler has full support for both Wayland and X11 display servers. All features work identically on both platforms.
+  </Accordion>
+
+  <Accordion title="Is MouseTiler free?">
+    Yes, MouseTiler is completely free to use and open source under the GPLv3 license. However, new features are now developed based on donations. Bug fixes and compatibility updates for new KDE versions remain free for everyone.
+  </Accordion>
+</AccordionGroup>
+
+## Features and functionality
+
+<AccordionGroup>
+  <Accordion title="Can I use MouseTiler with touch input or a stylus?">
+    Absolutely! MouseTiler supports:
+    - Mouse input
+    - Stylus/pen input (including Wacom devices)
+    - Touch input for touchscreens
+    
+    Press `Ctrl+Alt+I` to toggle between input modes, or set your preferred default input mode in the settings.
+  </Accordion>
+
+  <Accordion title="Does MouseTiler support multiple monitors?">
+    Yes, MouseTiler has comprehensive multi-monitor support. It works across multiple displays, respects individual monitor resolutions, handles different orientations, and supports mixed DPI configurations.
+  </Accordion>
+
+  <Accordion title="Can I create custom tile layouts?">
+    Yes! You can:
+    - Manually configure layouts using text configuration in settings
+    - Use the [web layout editor](https://rxweb.epizy.com/mousetiler/editor.html) for visual layout design
+    - Choose from many pre-defined layouts
+    - Create layouts with special tiles (maximize, minimize, split, etc.)
+    
+    The web editor is particularly useful for designing complex layouts visually.
+  </Accordion>
+
+  <Accordion title="What is auto-tiling and how does it work?">
+    Auto-tiling automatically arranges your windows in predefined patterns. MouseTiler supports:
+    - **Carousel style**: Windows arranged in a rotating sequence
+    - **Stacking style**: Windows stacked in a specific pattern
+    
+    Features include:
+    - Switch between up to three auto-tiler configurations (`Ctrl+Alt+X` and `Ctrl+Alt+C`)
+    - Toggle auto-tiling on/off with `Ctrl+Alt+A`
+    - Scroll through windows using screen edges or `Ctrl+Alt+Left/Right`
+    
+    [Watch the auto-tiling video overview](https://www.youtube.com/watch?v=wKhfUGHrgIw)
+  </Accordion>
+
+  <Accordion title="What is the 'Center in Tile' feature?">
+    Center in Tile (shortcut: `Meta+Ctrl+C`) allows you to keep a window's current size but center it in a specific tile position. This is useful when you want to position a window without resizing it.
+  </Accordion>
+
+  <Accordion title="Can MouseTiler manage virtual desktops?">
+    Yes! The virtual desktop manager lets you:
+    - Add new virtual desktops
+    - Auto-remove empty desktops
+    - Move applications between desktops
+    - Manage desktop workflows more efficiently
+    
+    Virtual desktop features integrate seamlessly with the tiling functionality.
+  </Accordion>
+</AccordionGroup>
+
+## Configuration and customization
+
+<AccordionGroup>
+  <Accordion title="Why don't my setting changes take effect immediately?">
+    Due to a KDE limitation, you must reload the script after changing settings. See the [Troubleshooting](/reference/troubleshooting) page for step-by-step instructions on reloading the script.
+    
+    Quick summary: Untick Mouse Tiler, Apply, tick it again, Apply.
+  </Accordion>
+
+  <Accordion title="Can MouseTiler follow my system theme?">
+    Yes! MouseTiler can:
+    - Automatically follow your system theme and colors
+    - Use pre-defined color themes
+    - Work with both dark and light modes
+    - Respect your accent color settings
+    
+    Enable "Follow system theme" in settings for automatic theme matching.
+  </Accordion>
+
+  <Accordion title="How customizable is MouseTiler?">
+    MouseTiler is highly customizable with over 20 settings, including:
+    - Tile size and spacing
+    - Grid position and appearance
+    - Input modes and behavior
+    - Keyboard shortcuts
+    - Color themes
+    - Animation speeds
+    - Auto-tiling configurations
+    - Virtual desktop behavior
+  </Accordion>
+
+  <Accordion title="Can I change the keyboard shortcuts?">
+    Yes, MouseTiler provides multiple customizable keyboard shortcuts in the settings. You can modify shortcuts for:
+    - Toggling auto-tiling
+    - Switching between auto-tiler layouts
+    - Center in tile
+    - Toggling input modes
+    - Virtual desktop management
+    - And more
+  </Accordion>
+</AccordionGroup>
+
+## Performance and compatibility
+
+<AccordionGroup>
+  <Accordion title="Does MouseTiler impact system performance?">
+    MouseTiler is designed to be lightweight and efficient. It only activates when you're moving windows or using tiling features. For users on very low-end hardware, there's a planned feature to minimize resource usage by fully disabling auto-tiling when not needed.
+  </Accordion>
+
+  <Accordion title="Can I use MouseTiler with other window management extensions?">
+    MouseTiler is designed to be compatible with other extensions. It works particularly well with [Remember Window Positions](https://github.com/rxappdev/RememberWindowPositions), which restores your tiled window positions when applications restart.
+    
+    However, using multiple tiling extensions simultaneously may cause conflicts. If you experience issues, try disabling other tiling scripts.
+  </Accordion>
+
+  <Accordion title="Which Linux distributions are supported?">
+    MouseTiler has been tested on:
+    - Fedora 42 KDE (Wayland and X11)
+    - Debian 13
+    - FreeBSD 15.0 (X11)
+    
+    It should work on any distribution running KDE Plasma 6+. See the [Compatibility](/reference/compatibility) page for details.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The tiler doesn't appear when I move windows">
+    Try toggling your input mode with `Ctrl+Alt+I`. MouseTiler supports different input methods (mouse/stylus/touch), and you may need to switch to the correct mode for your input device.
+  </Accordion>
+
+  <Accordion title="How do I remove the screen edge highlights?">
+    The edge highlights appear due to a KDE desktop effect. To disable:
+    1. Go to System Settings > Window Management > Desktop Effects
+    2. Disable "Highlight Screen Edges and Hot Corners"
+    
+    See the [Troubleshooting](/reference/troubleshooting) page for more details.
+  </Accordion>
+
+  <Accordion title="What if MouseTiler crashes or becomes unresponsive?">
+    You can disable MouseTiler from the command line without GUI access:
+    ```bash
+    kwriteconfig6 --file kwinrc --group Plugins --key mousetilerEnabled false
+    qdbus org.kde.KWin /KWin reconfigure
+    ```
+    
+    See the [Troubleshooting](/reference/troubleshooting) page for complete instructions.
+  </Accordion>
+</AccordionGroup>
+
+## Development and features
+
+<AccordionGroup>
+  <Accordion title="How are new features developed?">
+    New features are now developed based on community donations. The developer uses a donation-based system where:
+    - Users vote on which features they want next
+    - Features are priced based on development time (S, M, L, XL, XXL sizes)
+    - Once donation goals are reached, the top-voted feature is implemented
+    
+    Bug fixes and KDE compatibility updates remain free for everyone. See [PLANNEDFEATURES.md](https://github.com/rxappdev/MouseTiler/blob/main/PLANNEDFEATURES.md) for details.
+  </Accordion>
+
+  <Accordion title="How can I vote for features?">
+    You can vote on the [WakaTime poll](https://wakatime.com/polls/0e8054f0-e168-4f00-b31b-ed6c17bd51af) to help decide which features get implemented next. The highest-rated feature receives priority once its donation goal is reached.
+  </Accordion>
+
+  <Accordion title="Where can I request features or report bugs?">
+    - Join the [Discord channel](https://discord.gg/Js6AYsnQQj) for discussions and support
+    - Report bugs on the [GitHub repository](https://github.com/rxappdev/MouseTiler)
+    - Vote on existing feature requests in the community poll
+    - Check the [KDE Store page](https://store.kde.org/p/2334027) for updates
+  </Accordion>
+
+  <Accordion title="Is the source code available?">
+    Yes! MouseTiler is open source under the GPLv3 license. You can view and contribute to the source code on [GitHub](https://github.com/rxappdev/MouseTiler).
+  </Accordion>
+</AccordionGroup>
+
+## Getting help
+
+<Note>
+  Can't find your answer here? Join the [Discord channel](https://discord.gg/Js6AYsnQQj) where you can discuss issues, get help from the community, and find additional guides.
+</Note>
+
+For additional resources:
+- Check the [Troubleshooting](/reference/troubleshooting) page for common issues
+- Review the [Compatibility](/reference/compatibility) page for system requirements
+- Visit the [GitHub repository](https://github.com/rxappdev/MouseTiler) for technical documentation
